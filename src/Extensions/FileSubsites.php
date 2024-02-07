@@ -98,12 +98,12 @@ class FileSubsites extends DataExtension
 
     public function onAfterUpload()
     {
-        // If we have a parent, use it's subsite as our subsite
-        if ($this->owner->Parent()) {
-            $this->owner->SubsiteID = $this->owner->Parent()->SubsiteID;
-        } else {
-            $this->owner->SubsiteID = SubsiteState::singleton()->getSubsiteId();
-        }
+        /**
+         * ...CUSTOM....Removed the functionality which sets a file's SubsiteID
+         * based on the owning folder. This is a hack for the banners and should be
+         * resolved to set a new folder per subsite for banners.
+         */
+        $this->owner->SubsiteID = SubsiteState::singleton()->getSubsiteId();
         $this->owner->write();
     }
 

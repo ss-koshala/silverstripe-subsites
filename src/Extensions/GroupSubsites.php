@@ -156,6 +156,9 @@ class GroupSubsites extends DataExtension implements PermissionProvider
         if (Cookie::get('noSubsiteFilter') == 'true') {
             return;
         }
+        if (SubsiteState::singleton()->getSubsiteId() === 0) {
+            return;
+        }
         if ($dataQuery && $dataQuery->getQueryParam('Subsite.filter') === false) {
             return;
         }
